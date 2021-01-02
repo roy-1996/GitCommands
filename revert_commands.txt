@@ -1,0 +1,20 @@
+$ mkdir git_revert_test 
+$ cd git_revert_test/ $ git init . Initialized empty Git repository in /git_revert_test/.git/ 
+$ touch demo_file 
+$ git add demo_file 
+$ git commit -am "initial commit" [master (root-commit) 299b15f] initial commit 1 file changed, 0 insertions(+), 0 deletions(-) create mode 100644 demo_file 
+$ echo "initial content" >> demo_file 
+$ git commit -am "Add new content to demo file" [master 3602d88] add new content to demo file n 1 file changed, 1 insertion(+) 
+$ echo "prepended line content" >> demo_file 
+$ git commit -am "prepend content to demo file" [master 86bb32e] prepend content to demo file 1 file changed, 1 insertion(+) 
+$ git log --oneline 86bb32e prepend content to demo file 3602d88 add new content to demo file 299b15f initial commit
+
+Here we have initialized a repo in a newly created directory named git_revert_test. 
+We have made 3 commits to the repo in which we have added a file demo_file and modified its content twice. 
+At the end of the repo setup procedure, we invoke git log to display the commit history, showing a total of 3 commits. 
+
+$ git revert HEAD [master b9cd081] Revert "prepend content to demo file" 1 file changed, 1 deletion(-)
+
+
+
+

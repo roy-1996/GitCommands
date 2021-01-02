@@ -1,0 +1,43 @@
+$ mkdir git_reset_test 
+$ cd git_reset_test/ 
+$ git init . Initialized empty Git repository in /git_reset_test/.git/ 
+$ touch reset_lifecycle_file 
+$ git add reset_lifecycle_file 
+$ git commit -m "Initial commit" [master (root-commit) d386d86] initial commit 1 file changed, 0 insertions(+), 0 deletions(-) create mode 100644 reset_lifecycle_file
+
+The above example code creates a new git repository with a single empty file, reset_lifecycle_file. At this point, the example repository has a single commit (d386d86) from adding reset_lifecycle_file.
+
+$ echo 'hello git reset' > reset_lifecycle_file
+$ git status
+
+$ git add reset_lifecycle_file 
+$ git status 
+
+$ git commit -am "update content of reset_lifecycle_file"
+
+$ echo 'new file content' > new_file
+$ git add new_file
+$ echo 'changed content' >> reset_lifecycle_file
+
+$ git reset --hard 
+HEAD is now at 3a7561c update content of reset_lifecycle_file
+
+
+
+
+$ echo 'new file content' > new_file
+$ git add new_file
+$ echo 'append content' >> reset_lifecycle_file
+$ git add reset_lifecycle_file
+$ git reset --mixed
+
+
+git add reset_lifecycle_file 
+$ git reset --soft
+git commit -m "prepend content to reset_lifecycle_file"
+
+Whereas reverting is designed to safely undo a public commit, git reset is designed to undo local changes to the Staging Index and Working Directory. 
+Because of their distinct goals, the two commands are implemented differently: resetting completely removes a changeset, 
+whereas reverting maintains the original changeset and uses a new commit to apply the undo.
+
+

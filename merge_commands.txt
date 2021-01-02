@@ -1,0 +1,58 @@
+// https://www.youtube.com/watch?v=KWAZl2QHC44
+
+cd git_merge_test/
+git init
+git status
+
+// Creating and committing a file m1.txt in master branch.
+
+touch m1.txt
+git status
+git add .
+git status
+git commit -m "Adding m1.txt"
+git log
+
+// Creating a child branch 'feature' from the master branch.
+
+git checkout -b feature
+git status
+
+// Creating and committing a file f1.txt in 'feature' branch.
+
+touch f1.txt
+git status
+git add .
+git commit -m "Adding f1.txt"
+git log
+
+
+// Creating and committing a file m2.txt in master branch.
+
+git checkout master
+touch m2.txt
+git add .
+git commit -m "Added m2.txt"
+git log
+
+
+git checkout feature
+git merge master
+git log --oneline
+
+O/P:
+
+ef85409 (HEAD -> feature) Merge branch 'master' into feature
+dc4a1fc (master) Added m2.txt
+d5e98cb Adding f1.txt
+539f82a Adding m1.txt
+
+
+
+// Notes:
+
+1) git merge is a non-destructive operation.
+2) Existing branches are not changed in any way.
+3) Creates a new merge commit in the feature branch.
+
+

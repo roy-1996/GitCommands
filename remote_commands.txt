@@ -1,0 +1,15 @@
+git remote -v
+
+Lists down all the remote connections of the local repository
+
+O/P:
+
+images	https://github.com/roy-1996/Images.git (fetch)
+images	https://github.com/roy-1996/Images.git (push)
+origin	https://github.wdf.sap.corp/snowblind/sdk.git (fetch)
+origin	https://github.wdf.sap.corp/snowblind/sdk.git (push)
+
+git remote add images https://github.com/roy-1996/Images.git
+
+Adds a new connection between the local repo and the remote repo specified by the URL.
+'images' will serve as a alias while pulling and pushing operations. 

@@ -1,0 +1,55 @@
+cd git_rebase_test/
+git init
+git status
+
+// Creating and committing a file m1.txt in master branch.
+
+touch m1.txt
+git status
+git add .
+git status
+git commit -m "Adding m1.txt"
+git log
+
+// Creating a child branch 'feature' from the master branch.
+
+git checkout -b feature
+git status
+
+// Creating and committing a file f1.txt in 'feature' branch.
+
+touch f1.txt
+git status
+git add .
+git commit -m "Adding f1.txt"
+git log
+
+
+// Creating and committing a file m2.txt in master branch.
+
+git checkout master
+touch m2.txt
+git add .
+git commit -m "Added m2.txt"
+git log
+
+git checkout feature
+git rebase master
+
+O/P: Successfully rebased and updated refs/heads/feature.
+
+git log --oneline
+
+O/P:
+
+a795a45 (HEAD -> feature) Adding f1.txt
+5d81feb (master) Added m2.txt
+9452779 Adding m1.txt
+
+
+
+// Notes:
+
+1) Moves the entire feature branch to begin on the tip of the master branch.
+2) Re-writes the project history.
+3) We get much cleaner and linear project history.
